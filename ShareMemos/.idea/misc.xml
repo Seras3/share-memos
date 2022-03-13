@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1635" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.15" />
+        <entry key="app/src/main/res/xml/file_paths.xml" value="0.6031976744186046" />
       </map>
     </option>
   </component>

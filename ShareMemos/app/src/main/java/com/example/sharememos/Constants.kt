@@ -4,8 +4,12 @@ import android.Manifest
 
 object Constants {
 
-    const val TAG = "cameraX"
-    const val FILE_NAME_FORMAT = "yy-MM-dd-HH-mm-ss-SSS"
+    const val FILE_NAME_FORMAT = "yy-MM-dd-HH-mm-ss-SSSS"
     const val REQUEST_CODE_PERMISSION = 123
-    val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+    const val REQUEST_IMAGE_CAPTURE = 1
+    val REQUIRED_PERMISSIONS = arrayOf(
+        Manifest.permission.CAMERA,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
 }
