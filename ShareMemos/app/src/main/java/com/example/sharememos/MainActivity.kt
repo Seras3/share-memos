@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         if(allPermissionGranted()) {
             Toast.makeText(this, "We have permission", Toast.LENGTH_SHORT).show()
+            continueOnCreate()
         } else {
             ActivityCompat.requestPermissions(this,
                 Constants.REQUIRED_PERMISSIONS,
@@ -79,22 +79,6 @@ class MainActivity : AppCompatActivity() {
             else -> {
                 // Ignore all other requests.
             }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Constants.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Toast.makeText(this,
-                "PICTURE 100% CAPTURED"
-                , Toast.LENGTH_SHORT).show()
-
-            Log.d("LOG", data.toString())
-
-            Toast.makeText(this,
-                "ADDED TO GALLERY"
-                , Toast.LENGTH_SHORT).show()
-            //setPic()
         }
     }
 }

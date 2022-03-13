@@ -1,4 +1,4 @@
-package com.example.sharememos.ui.home
+package com.example.sharememos.ui.camera
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
