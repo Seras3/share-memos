@@ -1,15 +1,14 @@
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sharememos.Constants.TAG
@@ -17,6 +16,7 @@ import com.example.sharememos.R
 import com.example.sharememos.models.ItemsViewModel
 import java.math.BigDecimal
 import java.math.RoundingMode
+import java.net.URI
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -87,6 +87,19 @@ class GalleryAdapter(private val mList: List<ItemsViewModel>, private val contex
         val mbStringSize =  "$mbSize MB"
         holder.textViewSize.text = mbStringSize
 
+        holder.shareButton.setOnClickListener {
+            shareImage(itemsViewModel.contentUri)
+        }
+
+    }
+
+    fun shareImage(uri : Uri) {
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_STREAM, uri)
+            type = "image/jpeg"
+        }
+        context.startActivity(Intent.createChooser(shareIntent, null))
     }
 
     // return the number of the items in the list
@@ -99,5 +112,6 @@ class GalleryAdapter(private val mList: List<ItemsViewModel>, private val contex
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textViewName: TextView = itemView.findViewById(R.id.textViewName)
         val textViewSize: TextView = itemView.findViewById(R.id.textViewSize)
+        val shareButton: ImageButton = itemView.findViewById(R.id.shareButton)
     }
 }
