@@ -1,8 +1,6 @@
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
-import android.provider.MediaStore
-import android.provider.MediaStore.Images.Media.getBitmap
 import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +13,8 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sharememos.R
 import com.example.sharememos.models.ItemsViewModel
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -79,7 +79,11 @@ class GalleryAdapter(private val mList: List<ItemsViewModel>, private val contex
         holder.imageView.setImageBitmap(thumbnail)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = itemsViewModel.name
+        holder.textViewName.text = itemsViewModel.name
+
+        val mbSize = BigDecimal(itemsViewModel.size / 1048576.0).setScale(2, RoundingMode.HALF_EVEN)
+        val mbStringSize =  "$mbSize MB"
+        holder.textViewSize.text = mbStringSize
 
     }
 
@@ -91,6 +95,7 @@ class GalleryAdapter(private val mList: List<ItemsViewModel>, private val contex
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
-        val textView: TextView = itemView.findViewById(R.id.textView)
+        val textViewName: TextView = itemView.findViewById(R.id.textViewName)
+        val textViewSize: TextView = itemView.findViewById(R.id.textViewSize)
     }
 }

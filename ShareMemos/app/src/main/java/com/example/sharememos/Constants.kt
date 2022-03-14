@@ -6,6 +6,7 @@ object Constants {
 
     const val STORAGE_FOLDER_NAME = "ShareMemos"
     const val TAG = "SHARE-MEMOS"
+    const val FILE_PRE_TAG = "SM-"
     const val FILE_NAME_FORMAT = "yy-MM-dd-HH-mm-ss-SSSS"
     const val REQUEST_CODE_PERMISSION = 123
     const val REQUEST_IMAGE_CAPTURE = 1

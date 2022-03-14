@@ -106,7 +106,7 @@ class CameraFragment : Fragment() {
         val imageCapture = imageCapture ?: return
 
         // Create time stamped name and MediaStore entry.
-        val name = SimpleDateFormat(Constants.FILE_NAME_FORMAT, Locale.US)
+        val name = Constants.FILE_PRE_TAG + SimpleDateFormat(Constants.FILE_NAME_FORMAT, Locale.US)
             .format(System.currentTimeMillis())
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
