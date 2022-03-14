@@ -1,6 +1,7 @@
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
+import android.util.Log
 import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sharememos.Constants.TAG
 import com.example.sharememos.R
 import com.example.sharememos.models.ItemsViewModel
 import java.math.BigDecimal
@@ -70,7 +72,7 @@ class GalleryAdapter(private val mList: List<ItemsViewModel>, private val contex
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val itemsViewModel = mList[position]
+        val itemsViewModel = filterModelList[position]
 
         val thumbnail: Bitmap = context.contentResolver.loadThumbnail(
             itemsViewModel.contentUri, Size(640, 480), null)
